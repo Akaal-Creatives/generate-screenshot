@@ -18,7 +18,7 @@ A [Claude Code](https://claude.ai/claude-code) skill that generates screenshots 
 
 ```bash
 # Clone into your Claude skills directory
-git clone https://github.com/your-username/generate-screenshot ~/.claude/skills/generate-screenshot
+git clone https://github.com/Akaal-Creatives/generate-screenshot ~/.claude/skills/generate-screenshot
 
 # Install dependencies
 cd ~/.claude/skills/generate-screenshot && npm run setup
@@ -28,7 +28,7 @@ cd ~/.claude/skills/generate-screenshot && npm run setup
 
 ```bash
 # Clone into your project's .claude/skills directory
-git clone https://github.com/your-username/generate-screenshot .claude/skills/generate-screenshot
+git clone https://github.com/Akaal-Creatives/generate-screenshot .claude/skills/generate-screenshot
 
 # Install dependencies
 cd .claude/skills/generate-screenshot && npm run setup
