@@ -11,6 +11,7 @@
 
 const { execFileSync } = require('child_process');
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 
 function ensurePlaywright() {
@@ -79,7 +80,8 @@ async function main() {
   const finalCode = needsWrapping(code) ? wrapCode(code) : code;
 
   // Write to a temporary file for execution
-  const tmpFile = path.join('/tmp', `generate-screenshot-exec-${Date.now()}.js`);
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'generate-screenshot-exec-'));
+  const tmpFile = path.join(tmpDir, 'script.js');
   fs.writeFileSync(tmpFile, finalCode);
 
   try {
@@ -88,8 +90,8 @@ async function main() {
       env: { ...process.env, NODE_PATH: path.join(__dirname, 'node_modules') },
     });
   } finally {
-    // Clean up execution file
-    try { fs.unlinkSync(tmpFile); } catch { /* ignore */ }
+    // Clean up execution directory
+    try { fs.rmSync(tmpDir, { recursive: true }); } catch { /* ignore */ }
   }
 }
 
